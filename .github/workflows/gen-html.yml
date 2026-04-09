@@ -43,7 +43,7 @@ jobs:
         run: |
           echo "## 成果物のコード" > notes.md
           echo '```html' >> notes.md
-          cat ./src/jms.html >> notes.md # 生成したHTMLの中身を書き込む
+          cat ./jms.html >> notes.md # 生成したHTMLの中身を書き込む
           echo '```' >> notes.md
 
       - name: Upload Release Asset
