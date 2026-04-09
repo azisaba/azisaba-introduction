@@ -10,7 +10,12 @@
 - [src](./src/)
     - `introduction.md`から`jms.html`を生成するjs類を格納
 
-## `jsm.html`生成の方法
+## `jsm.html`を取得する方法
+### Release
+mainブランチに`introduction.md`をプッシュするとGithub Actionsで自動生成します。  
+生成されたhtmlは[Relaese](https://github.com/azisaba/azisaba-introduction/releases)から得られます。
+
+### ローカル実行
 1. `git clone https://github.com/azisaba/azisaba-introduction.git && cd ./azisaba-introduction/src`を実行
 1. `pnpm install`を実行
 1. `introduction.md`を編集する
