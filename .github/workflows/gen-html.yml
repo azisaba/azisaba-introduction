@@ -42,7 +42,7 @@ jobs:
       - name: Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          files: ./src/jms.html
+          files: ./jms.html
           name: 'Latest Output'
           tag_name: release-${{ github.sha }}
           generate_release_notes: true
