@@ -1,0 +1,16 @@
+{
+  "name": "azisaba-introduction",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "generate": "node index.js"
+  },
+  "keywords": [],
+  "author": "huda0209",
+  "license": "MIT",
+  "packageManager": "pnpm@10.33.0",
+  "dependencies": {
+    "markdown-it": "^14.1.1"
+  }
+}
