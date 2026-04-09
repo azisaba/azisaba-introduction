@@ -38,11 +38,19 @@ jobs:
       - name: Generate jms.html
         working-directory: ./src
         run: pnpm generate 
+        
+      - name: Create Release Notes File
+        run: |
+          echo "## 成果物のコード" > notes.md
+          echo '```html' >> notes.md
+          cat ./src/jms.html >> notes.md # 生成したHTMLの中身を書き込む
+          echo '```' >> notes.md
 
       - name: Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          files: ./jms.html
-          name: 'Latest Output'
           tag_name: release-${{ github.sha }}
+          name: 'Latest Output'
+          files: ./src/jms.html
           generate_release_notes: true
+          body_path: ./notes.md
