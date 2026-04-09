@@ -1,0 +1,48 @@
+name: Generate and Release jms.html
+
+on:
+  push:
+    paths:
+      - 'introduction.md'
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write 
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10.33.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.11.0
+          cache: 'pnpm'
+          cache-dependency-path: './src/pnpm-lock.yaml'
+
+      - name: Install dependencies
+        working-directory: ./src
+        run: pnpm install
+
+      - name: Generate jms.html
+        working-directory: ./src
+        run: pnpm generate 
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ./src/jms.html
+          name: 'Latest Output'
+          tag_name: release-${{ github.sha }}
+          generate_release_notes: true
